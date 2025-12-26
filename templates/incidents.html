@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incident Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Incident Dashboard</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Issue</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for incident in incidents %}
+        <tr>
+            <td>{{ incident[0] }}</td>
+            <td>{{ incident[1] }}</td>
+            <td>
+                {% if incident[2] == 'P1' %}
+                    <span class="badge-open">P1</span>
+                {% else %}
+                    <span class="badge-resolved">P2</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if incident[3] == 'Open' %}
+                    <span class="badge-open">Open</span>
+                {% else %}
+                    <span class="badge-resolved">Resolved</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if incident[3] == 'Open' %}
+                    <a href="/resolve/{{ incident[0] }}" class="btn btn-success">Resolve</a>
+                {% else %}
+                    Closed
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/" class="btn btn-secondary">Back to Status Page</a>
+</div>
+
+</body>
+</html>

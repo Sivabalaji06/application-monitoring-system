@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Application Health Monitoring</h1>
+
+    <p>Status: <span class="status-up">UP</span></p>
+
+    <a href="/simulate_failure" class="btn btn-danger">Simulate Incident</a><br>
+
+    <a href="/incidents" class="btn btn-secondary">View Incident Dashboard</a>
+</div>
+
+</body>
+</html>
